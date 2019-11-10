@@ -1,2 +1,3 @@
 # xiaoliuren-rust
-道家小六壬rust版本
+道家小六壬 卜法卷 rust版本
+业余爱好　练手项目
