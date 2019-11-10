@@ -1,0 +1,9 @@
+[package]
+name = "卜法卷"
+version = "0.1.0"
+authors = ["Aquarian-Age <xiaoyaoke7630@gmail.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
