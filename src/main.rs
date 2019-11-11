@@ -34,24 +34,50 @@ fn get_input() {
     println!("输入十以内的任意三个数字");
     let mut inputone = String::new();
     io::stdin().read_line(&mut inputone).expect("输入错误");
-    // println!("one = {}", inputone.trim_end());
+    println!("第一次输入的字符串:{}", inputone.trim());
 
     let mut inputtwo = String::new();
     io::stdin().read_line(&mut inputtwo).expect("错误的输入");
+    println!("第二次输入的字符串:{}", inputtwo.trim());
 
     let mut inputthree = String::new();
     io::stdin().read_line(&mut inputthree).expect("错误的输入");
+    println!("第三次输入的字符串:{}", inputthree.trim());
 
     //解析字符串内容 确认落宫数字
     let _one: u32 = inputone.trim().parse::<u32>().unwrap();
-    let _two: u32 = inputone.trim().parse::<u32>().unwrap();
-    let _three: u32 = inputone.trim().parse::<u32>().unwrap();
+    let _two: u32 = inputtwo.trim().parse::<u32>().unwrap();
+    let _three: u32 = inputthree.trim().parse::<u32>().unwrap();
+    println!("第一次输入数字＝　{}", _one);
+    println!("第二次输入数字＝　{}", _two);
+    println!("第三次输入数字＝　{}", _three);
 
     //根据确定落宫数字来定宫
+    //定一宫
     let yigong: u32 = _one % 6;
-    //let ergong: u32 = one % 6;
-    //let sangong: u32 = one % 6;
     println!("数字{}落{}宫", _one, yigong);
+    //定二 三宫
+    if _two > 6 {
+        let ergong: u32 = yigong + _two - 7;
+        println!("数字{}落{}宫", _two, ergong);
+        let sangong: u32 = ergong + _three - 7;
+        println!("数字{}落{}宫", _three, sangong);
+    } else if _two <= 6 {
+        let ergong: u32 = yigong + _two - 1;
+        println!("数字{}落{}宫", _two, ergong);
+        let sangong: u32 = ergong + _three - 1;
+        println!("数字{}落{}宫", _three, sangong);
+    }
+    /*
+        //定三宫
+        if _three > 6 {
+            let sangong: u32 = ergong + _three - 7;
+            println!("数字{}落{}宫", _three, sangong);
+        } else if _three <= 6 {
+            let sangong: u32 = ergong + _three - 1;
+            println!("数字{}落{}宫", _three, sangong);
+        }
+    */
 }
 
 fn main() {
