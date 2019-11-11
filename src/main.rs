@@ -30,8 +30,9 @@ fn gong_wei() {
 }
 
 //获取用户输入
-fn get_input() {
+fn get_input() -> (u32, u32, u32) {
     println!("输入十以内的任意三个数字");
+
     let mut inputone = String::new();
     io::stdin().read_line(&mut inputone).expect("输入错误");
 
@@ -45,38 +46,37 @@ fn get_input() {
     let _one: u32 = inputone.trim().parse::<u32>().unwrap();
     let _two: u32 = inputtwo.trim().parse::<u32>().unwrap();
     let _three: u32 = inputthree.trim().parse::<u32>().unwrap();
+    return (_one, _two, _three);
+}
+
+//定宫
+fn ding_gong() {
+    let (one, two, three) = get_input();
+    //    println!("{},{},{}", one, two, three);
 
     //根据确定落宫数字来定宫
     //定一宫
-    let yigong: u32 = _one % 6;
-    println!("数字{}落{}宫", _one, yigong);
+    let yigong: u32 = one % 6;
+    println!("数字{}落{}宫", one, yigong);
     //定二 三宫
-    if _two > 6 {
-        let ergong: u32 = yigong + _two - 7;
-        println!("数字{}落{}宫", _two, ergong);
-        let sangong: u32 = ergong + _three - 7;
-        println!("数字{}落{}宫", _three, sangong);
-    } else if _two <= 6 {
-        let ergong: u32 = yigong + _two - 1;
-        println!("数字{}落{}宫", _two, ergong);
-        let sangong: u32 = ergong + _three - 1;
-        println!("数字{}落{}宫", _three, sangong);
+    if two > 6 {
+        let ergong: u32 = yigong + two - 7;
+        println!("数字{}落{}宫", two, ergong);
+        let sangong: u32 = ergong + three - 7;
+        println!("数字{}落{}宫", three, sangong);
+    } else if two <= 6 {
+        let ergong: u32 = yigong + two - 1;
+        println!("数字{}落{}宫", two, ergong);
+        let sangong: u32 = ergong + three - 1;
+        println!("数字{}落{}宫", three, sangong);
     }
-    /*
-        //定三宫
-        if _three > 6 {
-            let sangong: u32 = ergong + _three - 7;
-            println!("数字{}落{}宫", _three, sangong);
-        } else if _three <= 6 {
-            let sangong: u32 = ergong + _three - 1;
-            println!("数字{}落{}宫", _three, sangong);
-        }
-    */
 }
 
 fn main() {
     //调用宫位
     gong_wei();
     //调用　获取用户输入
-    get_input();
+    // get_input();
+    //定宫
+    ding_gong();
 }
