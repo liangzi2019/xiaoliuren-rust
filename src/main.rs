@@ -34,23 +34,17 @@ fn get_input() {
     println!("输入十以内的任意三个数字");
     let mut inputone = String::new();
     io::stdin().read_line(&mut inputone).expect("输入错误");
-    println!("第一次输入的字符串:{}", inputone.trim());
 
     let mut inputtwo = String::new();
     io::stdin().read_line(&mut inputtwo).expect("错误的输入");
-    println!("第二次输入的字符串:{}", inputtwo.trim());
 
     let mut inputthree = String::new();
     io::stdin().read_line(&mut inputthree).expect("错误的输入");
-    println!("第三次输入的字符串:{}", inputthree.trim());
 
     //解析字符串内容 确认落宫数字
     let _one: u32 = inputone.trim().parse::<u32>().unwrap();
     let _two: u32 = inputtwo.trim().parse::<u32>().unwrap();
     let _three: u32 = inputthree.trim().parse::<u32>().unwrap();
-    println!("第一次输入数字＝　{}", _one);
-    println!("第二次输入数字＝　{}", _two);
-    println!("第三次输入数字＝　{}", _three);
 
     //根据确定落宫数字来定宫
     //定一宫
