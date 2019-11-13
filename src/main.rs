@@ -59,12 +59,9 @@ fn get_input() -> (u32, u32, u32) {
 //赤口  4  10(6*1+4)  16(6*2+4)  22(6*3+4) 28(6*4+4)  34(6*5+4) 赤口括号内都加４
 //小吉  5  11(6*1+5)  17(6*2+5)  23(6*3+5) 29(6*4+5)  35(6*5+5) 小吉括号内都加５
 //空亡  6  12(6*1+6)  18(6*2+6)  24(6*3+6) 30(6*4+6)  36(6*5+6) 空亡括号内都加6
-
+/*
 fn ding_gong() {
     let (one, two, three) = get_input();
-    //    println!("{},{},{}", one, two, three);
-
-    //根据确定落宫数字来定宫
     //定一宫
     let yigong: u32 = one % 6;
     println!("数字{}落{}宫", one, yigong);
@@ -81,6 +78,73 @@ fn ding_gong() {
         println!("数字{}落{}宫", three, sangong);
     }
 }
+*/
+fn qike() {
+    let (one, two, three) = get_input();
+
+    println!("依据以上数字起课为:");
+    //根据确定落宫数字来定宫
+    //定一宫
+    let yigong: u32 = one % 6;
+    // println!("数字{}落{}宫", one, yigong);
+    match yigong {
+        1 => println!("大安"),
+        2 => println!("留连"),
+        3 => println!("速喜"),
+        4 => println!("赤口"),
+        5 => println!("小吉"),
+        0 => println!("空亡"),
+        _ => println!("一宫什么鬼?"),
+    }
+    //定二 三宫
+    if two > 6 {
+        let ergong: u32 = yigong + two - 7;
+        //println!("数字{}落{}宫", two, ergong);
+        match ergong {
+            1 | 7 | 13 | 19 | 25 | 31 | 37 => println!("大安"),
+            2 | 8 | 14 | 20 | 26 | 32 | 38 | 44 => println!("留连"),
+            3 | 9 | 15 | 21 | 27 | 33 | 39 | 45 => println!("速喜"),
+            4 | 10 | 16 | 22 | 28 | 34 | 40 | 46 => println!("赤口"),
+            5 | 11 | 17 | 23 | 29 | 35 | 41 | 47 => println!("小吉"),
+            0 | 6 | 12 | 18 | 24 | 30 | 36 | 42 | 48 => println!("空亡"),
+            _ => println!("二宫什么鬼?"),
+        }
+        let sangong: u32 = ergong + three - 7;
+        // println!("数字{}落{}宫", three, sangong);
+        match sangong {
+            1 | 7 | 13 | 19 | 25 | 31 | 37 | 43 => println!("大安"),
+            2 | 8 | 14 | 20 | 26 | 32 | 38 | 44 => println!("留连"),
+            3 | 9 | 15 | 21 | 27 | 33 | 39 | 45 => println!("速喜"),
+            4 | 10 | 16 | 22 | 28 | 34 | 40 | 46 => println!("赤口"),
+            5 | 11 | 17 | 23 | 29 | 35 | 41 | 47 => println!("小吉"),
+            0 | 6 | 12 | 18 | 24 | 30 | 36 | 42 | 48 => println!("空亡"),
+            _ => println!("三宫什么鬼?"),
+        }
+    } else if two <= 6 {
+        let ergong: u32 = yigong + two - 1;
+        // println!("数字{}落{}宫", two, ergong);
+        match ergong {
+            1 | 7 | 13 | 19 | 25 | 31 | 37 | 43 => println!("大安"),
+            2 | 8 | 14 | 20 | 26 | 32 | 38 | 44 => println!("留连"),
+            3 | 9 | 15 | 21 | 27 | 33 | 39 | 45 => println!("速喜"),
+            4 | 10 | 16 | 22 | 28 | 34 | 40 | 46 => println!("赤口"),
+            5 | 11 | 17 | 23 | 29 | 35 | 41 | 47 => println!("小吉"),
+            0 | 6 | 12 | 18 | 24 | 30 | 36 | 42 | 48 => println!("空亡"),
+            _ => println!("二宫什么鬼?"),
+        }
+        let sangong: u32 = ergong + three - 1;
+        // println!("数字{}落{}宫", three, sangong);
+        match sangong {
+            1 | 7 | 13 | 19 | 25 | 31 | 37 | 43 => println!("大安"),
+            2 | 8 | 14 | 20 | 26 | 32 | 38 | 44 => println!("留连"),
+            3 | 9 | 15 | 21 | 27 | 33 | 39 | 45 => println!("速喜"),
+            4 | 10 | 16 | 22 | 28 | 34 | 40 | 46 => println!("赤口"),
+            5 | 11 | 17 | 23 | 29 | 35 | 41 | 47 => println!("小吉"),
+            0 | 6 | 12 | 18 | 24 | 30 | 36 | 42 | 48 => println!("空亡"),
+            _ => println!("三宫什么鬼?"),
+        }
+    }
+}
 
 fn main() {
     //调用宫位
@@ -88,5 +152,6 @@ fn main() {
     //调用　获取用户输入
     // get_input();
     //定宫
-    ding_gong();
+    //ding_gong();
+    qike();
 }
