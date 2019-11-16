@@ -40,11 +40,11 @@ pub fn list_info() -> u32 {
     let _n: u32 = input.trim().parse::<u32>().unwrap();
     //println!("选择{}", _n);
 
-    valur_in_info(_n);
+    value_in_info(_n);
     return _n;
 }
 //根据输入遍历占卜信息
-pub fn valur_in_info(n: u32) {
+pub fn value_in_info(n: u32) {
     let mut _n1 = n;
     //println!("n in value = {}", _n1);
     if _n1 == 1 {
