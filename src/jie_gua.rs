@@ -742,12 +742,12 @@ pub fn info_zhan_qiu_cai(number: u32) {
     };
     //依据第三宫落宫解课
     match number {
-        1 => println!("info:{}", zhanqiucai.jie_daan()),
-        2 => println!("info:{}", zhanqiucai.jie_liulian()),
-        3 => println!("info:{}", zhanqiucai.jie_suxi()),
-        4 => println!("info:{}", zhanqiucai.jie_chikou()),
-        5 => println!("info:{}", zhanqiucai.jie_xiaoji()),
-        6 => println!("info:{}", zhanqiucai.jie_kongwang()),
+        1 | 7 | 13 | 19 | 25 | 31 | 37 | 43 => println!("info:{}", zhanqiucai.jie_daan()),
+        2 | 8 | 14 | 20 | 26 | 32 | 38 | 44 => println!("info:{}", zhanqiucai.jie_liulian()),
+        3 | 9 | 15 | 21 | 27 | 33 | 39 | 45 => println!("info:{}", zhanqiucai.jie_suxi()),
+        4 | 10 | 16 | 22 | 28 | 34 | 40 | 46 => println!("info:{}", zhanqiucai.jie_chikou()),
+        5 | 11 | 17 | 23 | 29 | 35 | 41 | 47 => println!("info:{}", zhanqiucai.jie_xiaoji()),
+        0 | 6 | 12 | 18 | 24 | 30 | 36 | 42 | 48 => println!("info:{}", zhanqiucai.jie_kongwang()),
         _ => println!("落宫数字异常无法解卦..."),
     }
 }
@@ -765,12 +765,12 @@ pub fn info_zhan_xing_ren(number: u32) {
     };
     //依据第三宫落宫解课
     match number {
-        1 => println!("info:{}", zhanxingren.jie_daan()),
-        2 => println!("info:{}", zhanxingren.jie_liulian()),
-        3 => println!("info:{}", zhanxingren.jie_suxi()),
-        4 => println!("info:{}", zhanxingren.jie_chikou()),
-        5 => println!("info:{}", zhanxingren.jie_xiaoji()),
-        6 => println!("info:{}", zhanxingren.jie_kongwang()),
+        1 | 7 | 13 | 19 | 25 | 31 | 37 | 43 => println!("info:{}", zhanxingren.jie_daan()),
+        2 | 8 | 14 | 20 | 26 | 32 | 38 | 44 => println!("info:{}", zhanxingren.jie_liulian()),
+        3 | 9 | 15 | 21 | 27 | 33 | 39 | 45 => println!("info:{}", zhanxingren.jie_suxi()),
+        4 | 10 | 16 | 22 | 28 | 34 | 40 | 46 => println!("info:{}", zhanxingren.jie_chikou()),
+        5 | 11 | 17 | 23 | 29 | 35 | 41 | 47 => println!("info:{}", zhanxingren.jie_xiaoji()),
+        0 | 6 | 12 | 18 | 24 | 30 | 36 | 42 | 48 => println!("info:{}", zhanxingren.jie_kongwang()),
         _ => println!("落宫数字异常无法解卦..."),
     }
 }
@@ -788,12 +788,12 @@ pub fn info_zhan_xun_ren(number: u32) {
     };
     //依据第三宫落宫解课
     match number {
-        1 => println!("info:{}", zhanxunren.jie_daan()),
-        2 => println!("info:{}", zhanxunren.jie_liulian()),
-        3 => println!("info:{}", zhanxunren.jie_suxi()),
-        4 => println!("info:{}", zhanxunren.jie_chikou()),
-        5 => println!("info:{}", zhanxunren.jie_xiaoji()),
-        6 => println!("info:{}", zhanxunren.jie_kongwang()),
+        1 | 7 | 13 | 19 | 25 | 31 | 37 | 43 => println!("info:{}", zhanxunren.jie_daan()),
+        2 | 8 | 14 | 20 | 26 | 32 | 38 | 44 => println!("info:{}", zhanxunren.jie_liulian()),
+        3 | 9 | 15 | 21 | 27 | 33 | 39 | 45 => println!("info:{}", zhanxunren.jie_suxi()),
+        4 | 10 | 16 | 22 | 28 | 34 | 40 | 46 => println!("info:{}", zhanxunren.jie_chikou()),
+        5 | 11 | 17 | 23 | 29 | 35 | 41 | 47 => println!("info:{}", zhanxunren.jie_xiaoji()),
+        0 | 6 | 12 | 18 | 24 | 30 | 36 | 42 | 48 => println!("info:{}", zhanxunren.jie_kongwang()),
         _ => println!("落宫数字异常无法解卦..."),
     }
 }
@@ -811,12 +811,12 @@ pub fn info_zhan_jia_xian(number: u32) {
     };
     //依据第三宫落宫解课
     match number {
-        1 => println!("info:{}", zhanjiaxian.jie_daan()),
-        2 => println!("info:{}", zhanjiaxian.jie_liulian()),
-        3 => println!("info:{}", zhanjiaxian.jie_suxi()),
-        4 => println!("info:{}", zhanjiaxian.jie_chikou()),
-        5 => println!("info:{}", zhanjiaxian.jie_xiaoji()),
-        6 => println!("info:{}", zhanjiaxian.jie_kongwang()),
+        1 | 7 | 13 | 19 | 25 | 31 | 37 | 43 => println!("info:{}", zhanjiaxian.jie_daan()),
+        2 | 8 | 14 | 20 | 26 | 32 | 38 | 44 => println!("info:{}", zhanjiaxian.jie_liulian()),
+        3 | 9 | 15 | 21 | 27 | 33 | 39 | 45 => println!("info:{}", zhanjiaxian.jie_suxi()),
+        4 | 10 | 16 | 22 | 28 | 34 | 40 | 46 => println!("info:{}", zhanjiaxian.jie_chikou()),
+        5 | 11 | 17 | 23 | 29 | 35 | 41 | 47 => println!("info:{}", zhanjiaxian.jie_xiaoji()),
+        0 | 6 | 12 | 18 | 24 | 30 | 36 | 42 | 48 => println!("info:{}", zhanjiaxian.jie_kongwang()),
         _ => println!("落宫数字异常无法解卦..."),
     }
 }
@@ -834,12 +834,12 @@ pub fn info_zhan_shi_wu(number: u32) {
     };
     //依据第三宫落宫解课
     match number {
-        1 => println!("info:{}", zhanshiwu.jie_daan()),
-        2 => println!("info:{}", zhanshiwu.jie_liulian()),
-        3 => println!("info:{}", zhanshiwu.jie_suxi()),
-        4 => println!("info:{}", zhanshiwu.jie_chikou()),
-        5 => println!("info:{}", zhanshiwu.jie_xiaoji()),
-        6 => println!("info:{}", zhanshiwu.jie_kongwang()),
+        1 | 7 | 13 | 19 | 25 | 31 | 37 | 43 => println!("info:{}", zhanshiwu.jie_daan()),
+        2 | 8 | 14 | 20 | 26 | 32 | 38 | 44 => println!("info:{}", zhanshiwu.jie_liulian()),
+        3 | 9 | 15 | 21 | 27 | 33 | 39 | 45 => println!("info:{}", zhanshiwu.jie_suxi()),
+        4 | 10 | 16 | 22 | 28 | 34 | 40 | 46 => println!("info:{}", zhanshiwu.jie_chikou()),
+        5 | 11 | 17 | 23 | 29 | 35 | 41 | 47 => println!("info:{}", zhanshiwu.jie_xiaoji()),
+        0 | 6 | 12 | 18 | 24 | 30 | 36 | 42 | 48 => println!("info:{}", zhanshiwu.jie_kongwang()),
         _ => println!("落宫数字异常无法解卦..."),
     }
 }
@@ -857,12 +857,12 @@ pub fn info_zhan_bing_ren(number: u32) {
     };
     //依据第三宫落宫解课
     match number {
-        1 => println!("info:{}", zhanbingren.jie_daan()),
-        2 => println!("info:{}", zhanbingren.jie_liulian()),
-        3 => println!("info:{}", zhanbingren.jie_suxi()),
-        4 => println!("info:{}", zhanbingren.jie_chikou()),
-        5 => println!("info:{}", zhanbingren.jie_xiaoji()),
-        6 => println!("info:{}", zhanbingren.jie_kongwang()),
+        1 | 7 | 13 | 19 | 25 | 31 | 37 | 43 => println!("info:{}", zhanbingren.jie_daan()),
+        2 | 8 | 14 | 20 | 26 | 32 | 38 | 44 => println!("info:{}", zhanbingren.jie_liulian()),
+        3 | 9 | 15 | 21 | 27 | 33 | 39 | 45 => println!("info:{}", zhanbingren.jie_suxi()),
+        4 | 10 | 16 | 22 | 28 | 34 | 40 | 46 => println!("info:{}", zhanbingren.jie_chikou()),
+        5 | 11 | 17 | 23 | 29 | 35 | 41 | 47 => println!("info:{}", zhanbingren.jie_xiaoji()),
+        0 | 6 | 12 | 18 | 24 | 30 | 36 | 42 | 48 => println!("info:{}", zhanbingren.jie_kongwang()),
         _ => println!("落宫数字异常无法解卦..."),
     }
 }
@@ -880,12 +880,12 @@ pub fn info_zhan_zou_shi(number: u32) {
     };
     /*依据第三宫落宫解课  */
     match number {
-        1 => println!("info:{}", zhanzoushi.jie_daan()),
-        2 => println!("info:{}", zhanzoushi.jie_liulian()),
-        3 => println!("info:{}", zhanzoushi.jie_suxi()),
-        4 => println!("info:{}", zhanzoushi.jie_chikou()),
-        5 => println!("info:{}", zhanzoushi.jie_xiaoji()),
-        6 => println!("info:{}", zhanzoushi.jie_kongwang()),
+        1 | 7 | 13 | 19 | 25 | 31 | 37 | 43 => println!("info:{}", zhanzoushi.jie_daan()),
+        2 | 8 | 14 | 20 | 26 | 32 | 38 | 44 => println!("info:{}", zhanzoushi.jie_liulian()),
+        3 | 9 | 15 | 21 | 27 | 33 | 39 | 45 => println!("info:{}", zhanzoushi.jie_suxi()),
+        4 | 10 | 16 | 22 | 28 | 34 | 40 | 46 => println!("info:{}", zhanzoushi.jie_chikou()),
+        5 | 11 | 17 | 23 | 29 | 35 | 41 | 47 => println!("info:{}", zhanzoushi.jie_xiaoji()),
+        0 | 6 | 12 | 18 | 24 | 30 | 36 | 42 | 48 => println!("info:{}", zhanzoushi.jie_kongwang()),
         _ => println!("落宫数字异常无法解卦..."),
     }
 }
@@ -904,12 +904,12 @@ pub fn info_zhan_fang_gui(number: u32) {
     /*依据第三宫落宫解课
      */
     match number {
-        1 => println!("info:{}", zhanfanggui.jie_daan()),
-        2 => println!("info:{}", zhanfanggui.jie_liulian()),
-        3 => println!("info:{}", zhanfanggui.jie_suxi()),
-        4 => println!("info:{}", zhanfanggui.jie_chikou()),
-        5 => println!("info:{}", zhanfanggui.jie_xiaoji()),
-        6 => println!("info:{}", zhanfanggui.jie_kongwang()),
+        1 | 7 | 13 | 19 | 25 | 31 | 37 | 43 => println!("info:{}", zhanfanggui.jie_daan()),
+        2 | 8 | 14 | 20 | 26 | 32 | 38 | 44 => println!("info:{}", zhanfanggui.jie_liulian()),
+        3 | 9 | 15 | 21 | 27 | 33 | 39 | 45 => println!("info:{}", zhanfanggui.jie_suxi()),
+        4 | 10 | 16 | 22 | 28 | 34 | 40 | 46 => println!("info:{}", zhanfanggui.jie_chikou()),
+        5 | 11 | 17 | 23 | 29 | 35 | 41 | 47 => println!("info:{}", zhanfanggui.jie_xiaoji()),
+        0 | 6 | 12 | 18 | 24 | 30 | 36 | 42 | 48 => println!("info:{}", zhanfanggui.jie_kongwang()),
         _ => println!("落宫数字异常无法解卦..."),
     }
 }

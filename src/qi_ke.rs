@@ -1,7 +1,7 @@
 //卜法卷可卜算内容列表
 use crate::jie_gua::display_info;
-use std::io;
 use std::process::exit;
+use std::{io, thread, time};
 
 //列出可占卜信息
 pub fn list_info() -> u32 {
@@ -200,6 +200,10 @@ pub fn qi_ke(n: u32) {
             0 | 6 | 12 | 18 | 24 | 30 | 36 | 42 | 48 => println!("空亡"),
             _ => println!("三宫什么鬼?"),
         }
+        //画一个界限线
+        println!("::::::::::::::::::::::::::::");
+        let ten_millis = time::Duration::from_secs(3);
+        thread::sleep(ten_millis);
         //根据落宫起课
         display_info(n, sangong);
     } else if two <= 6 {
@@ -225,6 +229,10 @@ pub fn qi_ke(n: u32) {
             0 | 6 | 12 | 18 | 24 | 30 | 36 | 42 | 48 => println!("空亡"),
             _ => println!("三宫什么鬼?"),
         }
+        //画一个界限线
+        println!("::::::::::::::::::::::::::::");
+        let ten_millis = time::Duration::from_secs(3);
+        thread::sleep(ten_millis);
         //根据落宫起课
         display_info(n, sangong);
     }
