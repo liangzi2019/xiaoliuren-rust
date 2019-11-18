@@ -1,27 +1,7 @@
 //卜法卷可卜算内容列表
-
+use crate::jie_gua::display_info;
 use std::io;
-#[allow(dead_code)]
-enum Info {
-    //    占求财,
-    //    占行人,
-    //    占寻人,
-    //    占家先,
-    //    占失物,
-    //    占病人,
-    //    占走失,
-    //    占访贵,
-    //    占合伙,
-    //    占婚姻,
-    //    占埋葬,
-    Zhanxiufang,
-    //    占送方,
-    //    占预兆,
-    //    占官非,
-    //    占风水,
-    //    占虚实,
-    Zhanqita,
-}
+
 //列出可占卜信息
 pub fn list_info() -> u32 {
     println!(
@@ -51,12 +31,16 @@ pub fn value_in_info(n: u32) {
         println!("选择{}: 占求才", _n1);
         println!(" ");
         // get_input(); //这里导致重复获取用户输入
-        qi_ke();
+        qi_ke(n);
+    }
+    if _n1 == 2 {
+        println!("选择{}: 占行人", _n1);
+        qi_ke(n);
     }
     if _n1 == 18 {
         println!("选择{}: 占其他", _n1);
         //get_input();
-        qi_ke();
+        qi_ke(n);
     }
 }
 //获取用户输入
@@ -81,7 +65,7 @@ pub fn get_input() -> (u32, u32, u32) {
 }
 
 //根据输入起课
-pub fn qi_ke() {
+pub fn qi_ke(n: u32) {
     let (one, two, three) = get_input();
 
     println!("依据以上数字起课为:");
@@ -122,6 +106,8 @@ pub fn qi_ke() {
             0 | 6 | 12 | 18 | 24 | 30 | 36 | 42 | 48 => println!("空亡"),
             _ => println!("三宫什么鬼?"),
         }
+        //根据落宫起课
+        display_info(n, sangong);
     } else if two <= 6 {
         let ergong: u32 = yigong + two - 1;
         // println!("数字{}落{}宫", two, ergong);
@@ -145,5 +131,7 @@ pub fn qi_ke() {
             0 | 6 | 12 | 18 | 24 | 30 | 36 | 42 | 48 => println!("空亡"),
             _ => println!("三宫什么鬼?"),
         }
+        //根据落宫起课
+        display_info(n, sangong);
     }
 }
