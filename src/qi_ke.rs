@@ -154,7 +154,11 @@ pub fn get_input() -> (u32, u32, u32) {
             exit(1);
         }
     };
-
+    //判断输入数字是否在起课允许的数字范围之内
+    if (_one > 9 || _one < 1) || (_two > 9 || _two < 1) || (_three > 9 || _three < 1) {
+        println!("输入数字不在起课范围内 退出...");
+        exit(1);
+    }
     return (_one, _two, _three);
 }
 
