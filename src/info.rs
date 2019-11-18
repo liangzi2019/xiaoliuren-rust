@@ -1,6 +1,7 @@
 //卜法卷可卜算内容列表
 use crate::jie_gua::display_info;
 use std::io;
+use std::process::exit;
 
 //列出可占卜信息
 pub fn list_info() -> u32 {
@@ -17,8 +18,15 @@ pub fn list_info() -> u32 {
     println!("根据数字选择要测算的内容");
     let mut input = String::new();
     io::stdin().read_line(&mut input).ok().expect("输入错误...");
-    let _n: u32 = input.trim().parse::<u32>().unwrap();
-    //println!("选择{}", _n);
+    // let _n: u32 = input.trim().parse::<u32>().unwrap();
+    //过滤掉用户的错误输入
+    let _n: u32 = match input.trim().parse() {
+        Ok(num) => num,
+        Err(_) => {
+            println!("输入错误　程序退出...");
+            exit(1);
+        }
+    };
 
     value_in_info(_n);
     return _n;
@@ -29,18 +37,79 @@ pub fn value_in_info(n: u32) {
     //println!("n in value = {}", _n1);
     if _n1 == 1 {
         println!("选择{}: 占求才", _n1);
-        println!(" ");
-        // get_input(); //这里导致重复获取用户输入
         qi_ke(n);
     }
     if _n1 == 2 {
         println!("选择{}: 占行人", _n1);
         qi_ke(n);
     }
+    if _n1 == 3 {
+        println!("选择{}:占寻人", _n1)
+    }
+    if _n1 == 4 {
+        println!("选择{}: 占家先", _n1);
+        qi_ke(n);
+    }
+    if _n1 == 5 {
+        println!("选择{}: 占失物", _n1);
+        qi_ke(n);
+    }
+    if _n1 == 6 {
+        println!("选择{}: 占病人", _n1);
+        qi_ke(n);
+    }
+    if _n1 == 7 {
+        println!("选择{}: 占走失", _n1);
+        qi_ke(n);
+    }
+    if _n1 == 8 {
+        println!("选择{}: 占访贵", _n1);
+        qi_ke(n);
+    }
+    if _n1 == 9 {
+        println!("选择{}: 占合伙", _n1);
+        qi_ke(n);
+    }
+    if _n1 == 10 {
+        println!("选择{}: 占婚姻", _n1);
+        qi_ke(n);
+    }
+    if _n1 == 11 {
+        println!("选择{}: 占埋葬", _n1);
+        qi_ke(n);
+    }
+    if _n1 == 12 {
+        println!("选择{}: 占修方", _n1);
+        qi_ke(n);
+    }
+    if _n1 == 13 {
+        println!("选择{}: 占送方", _n1);
+        qi_ke(n);
+    }
+    if _n1 == 14 {
+        println!("选择{}: 占预兆", _n1);
+        qi_ke(n);
+    }
+    if _n1 == 15 {
+        println!("选择{}: 占官非", _n1);
+        qi_ke(n);
+    }
+    if _n1 == 16 {
+        println!("选择{}: 占风水", _n1);
+        qi_ke(n);
+    }
+    if _n1 == 17 {
+        println!("选择{}: 占虚实", _n1);
+        qi_ke(n);
+    }
     if _n1 == 18 {
         println!("选择{}: 占其他", _n1);
-        //get_input();
         qi_ke(n);
+    }
+
+    if _n1 < 1 || _n1 > 18 {
+        println!("问卜已超范围 退出...");
+        exit(1);
     }
 }
 //获取用户输入
@@ -56,11 +125,35 @@ pub fn get_input() -> (u32, u32, u32) {
 
     let mut inputthree = String::new();
     io::stdin().read_line(&mut inputthree).expect("错误的输入");
+    /*
+        //解析字符串内容 确认落宫数字
+        let _one: u32 = inputone.trim().parse::<u32>().unwrap();
+        let _two: u32 = inputtwo.trim().parse::<u32>().unwrap();
+        let _three: u32 = inputthree.trim().parse::<u32>().unwrap();
+    */
+    //过滤无效的输入
+    let _one: u32 = match inputone.trim().parse() {
+        Ok(num) => num,
+        Err(_) => {
+            println!("下一次请输入数字　现在程序退出...");
+            exit(1);
+        }
+    };
+    let _two: u32 = match inputtwo.trim().parse() {
+        Ok(num) => num,
+        Err(_) => {
+            println!("下一次请输入数字　现在程序退出...");
+            exit(1);
+        }
+    };
+    let _three: u32 = match inputthree.trim().parse() {
+        Ok(num) => num,
+        Err(_) => {
+            println!("下一次请输入数字　现在程序退出...");
+            exit(1);
+        }
+    };
 
-    //解析字符串内容 确认落宫数字
-    let _one: u32 = inputone.trim().parse::<u32>().unwrap();
-    let _two: u32 = inputtwo.trim().parse::<u32>().unwrap();
-    let _three: u32 = inputthree.trim().parse::<u32>().unwrap();
     return (_one, _two, _three);
 }
 
