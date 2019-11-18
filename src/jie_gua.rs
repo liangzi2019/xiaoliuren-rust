@@ -1,7 +1,6 @@
 //每个解法是一个结构体
 
-// use crate::info::list_info;
-// use std::time::SystemTime;
+use std::process::exit;
 
 //六宫的结构体
 pub struct GongWei {
@@ -636,7 +635,7 @@ impl JieKongWang for ZhanXuShi {
         format!("占病人-空亡:{}", self.xu_shi.kong_wang)
     }
 }
-//占其他
+//18:占其他
 impl JieDaAn for ZhanQiTa {
     fn jie_daan(&self) -> String {
         format!("占病人-大安:{}", self.qi_ta.da_an)
@@ -668,13 +667,65 @@ impl JieKongWang for ZhanQiTa {
     }
 }
 
-//打印解卦信息　_n为选择占卜内容　即: value_in_info(n: u32)
+//打印解卦信息　_n1为选择占卜内容　即: value_in_info(n: u32)
 pub fn display_info(_n1: u32, number: u32) {
     if _n1 == 1 {
         info_zhan_qiu_cai(number); //1:占求财
     }
     if _n1 == 2 {
         info_zhan_xing_ren(number); //2:占行人
+    }
+    if _n1 == 3 {
+        info_zhan_xun_ren(number); //3:占寻人
+    }
+    if _n1 == 4 {
+        info_zhan_jia_xian(number); //4:占家先
+    }
+    if _n1 == 5 {
+        info_zhan_shi_wu(number); //5:占失物
+    }
+    if _n1 == 6 {
+        info_zhan_bing_ren(number); //6:占病人
+    }
+    if _n1 == 7 {
+        info_zhan_zou_shi(number); //7:占走失
+    }
+    if _n1 == 8 {
+        info_zhan_fang_gui(number); //8:占访贵
+    } /*
+      if _n1 == 9 {
+          info_zhan_he_huo(number); //9:占合伙
+      }
+      if _n1 == 10 {
+          info_zhan_hun_yin(number); //10:占婚姻
+      }
+      if _n1 == 11 {
+          info_zhan_mai_zang(number); //11:占埋葬
+      }
+      if _n1 == 12 {
+          info_zhan_xiu_fang(number); //4:占修方
+      }
+      if _n1 == 13 {
+          info_zhan_song_fang(number); //13:占送方
+      }
+      if _n1 == 14 {
+          info_zhan_yu_zhao(number); //14:占预兆
+      }
+      if _n1 == 15 {
+          info_zhan_guan_fei(number); //15:占官非
+      }
+      if _n1 == 16 {
+          info_zhan_feng_shui(number); //16:占风水
+      }
+      if _n1 == 17 {
+          info_zhan_xu_shi(number); //17:占虚实
+      }
+      if _n1 == 18 {
+          info_zhan_qi_ta(number); //18:占其他
+      }*/
+    if _n1 < 1 || _n1 > 18 {
+        println!("解卦已超范围　退出...");
+        exit(1);
     }
 }
 //1:占求财
@@ -709,7 +760,7 @@ pub fn info_zhan_xing_ren(number: u32) {
             su_xi: String::from("速喜立时见"),
             chi_kou: String::from("白虎在他乡 "),
             xiao_ji: String::from("小吉终须到"),
-            kong_wang: String::from("空亡即世亡"),
+            kong_wang: String::from("空亡即时亡"),
         },
     };
     //依据第三宫落宫解课
@@ -723,3 +774,162 @@ pub fn info_zhan_xing_ren(number: u32) {
         _ => println!("落宫数字异常无法解卦..."),
     }
 }
+//3:占寻人
+pub fn info_zhan_xun_ren(number: u32) {
+    let zhanxunren = ZhanXunRen {
+        xun_ren: GongWei {
+            da_an: String::from("大安人回来"),
+            liu_lian: String::from("流连在家中"),
+            su_xi: String::from("速喜须相见"),
+            chi_kou: String::from("白虎在他乡 "),
+            xiao_ji: String::from("小吉在路中"),
+            kong_wang: String::from("空亡出远方"),
+        },
+    };
+    //依据第三宫落宫解课
+    match number {
+        1 => println!("info:{}", zhanxunren.jie_daan()),
+        2 => println!("info:{}", zhanxunren.jie_liulian()),
+        3 => println!("info:{}", zhanxunren.jie_suxi()),
+        4 => println!("info:{}", zhanxunren.jie_chikou()),
+        5 => println!("info:{}", zhanxunren.jie_xiaoji()),
+        6 => println!("info:{}", zhanxunren.jie_kongwang()),
+        _ => println!("落宫数字异常无法解卦..."),
+    }
+}
+//4:占家先
+pub fn info_zhan_jia_xian(number: u32) {
+    let zhanjiaxian = ZhanJiaXian {
+        jia_xian: GongWei {
+            da_an: String::from("大安家先神"),
+            liu_lian: String::from("流连孝服衰"),
+            su_xi: String::from("速喜男人病"),
+            chi_kou: String::from("白虎有官方"),
+            xiao_ji: String::from("小吉庙中神"),
+            kong_wang: String::from("空亡万事犹"),
+        },
+    };
+    //依据第三宫落宫解课
+    match number {
+        1 => println!("info:{}", zhanjiaxian.jie_daan()),
+        2 => println!("info:{}", zhanjiaxian.jie_liulian()),
+        3 => println!("info:{}", zhanjiaxian.jie_suxi()),
+        4 => println!("info:{}", zhanjiaxian.jie_chikou()),
+        5 => println!("info:{}", zhanjiaxian.jie_xiaoji()),
+        6 => println!("info:{}", zhanjiaxian.jie_kongwang()),
+        _ => println!("落宫数字异常无法解卦..."),
+    }
+}
+//5:占失物
+pub fn info_zhan_shi_wu(number: u32) {
+    let zhanshiwu = ZhanShiWu {
+        shi_wu: GongWei {
+            da_an: String::from("大安物不见"),
+            liu_lian: String::from("流连在眼前"),
+            su_xi: String::from("速喜门庭见"),
+            chi_kou: String::from("白虎被人收"),
+            xiao_ji: String::from("小吉有人报"),
+            kong_wang: String::from("空亡不见回"),
+        },
+    };
+    //依据第三宫落宫解课
+    match number {
+        1 => println!("info:{}", zhanshiwu.jie_daan()),
+        2 => println!("info:{}", zhanshiwu.jie_liulian()),
+        3 => println!("info:{}", zhanshiwu.jie_suxi()),
+        4 => println!("info:{}", zhanshiwu.jie_chikou()),
+        5 => println!("info:{}", zhanshiwu.jie_xiaoji()),
+        6 => println!("info:{}", zhanshiwu.jie_kongwang()),
+        _ => println!("落宫数字异常无法解卦..."),
+    }
+}
+//6:占病人
+pub fn info_zhan_bing_ren(number: u32) {
+    let zhanbingren = ZhanBingRen {
+        bing_ren: GongWei {
+            da_an: String::from("大安不久病离床"),
+            liu_lian: String::from("流连不久病难当"),
+            su_xi: String::from("速喜男轻女便重"),
+            chi_kou: String::from("白虎知时是重衰"),
+            xiao_ji: String::from("小吉时中为吉利"),
+            kong_wang: String::from("空亡到底是空亡"),
+        },
+    };
+    //依据第三宫落宫解课
+    match number {
+        1 => println!("info:{}", zhanbingren.jie_daan()),
+        2 => println!("info:{}", zhanbingren.jie_liulian()),
+        3 => println!("info:{}", zhanbingren.jie_suxi()),
+        4 => println!("info:{}", zhanbingren.jie_chikou()),
+        5 => println!("info:{}", zhanbingren.jie_xiaoji()),
+        6 => println!("info:{}", zhanbingren.jie_kongwang()),
+        _ => println!("落宫数字异常无法解卦..."),
+    }
+}
+//7:占走失
+pub fn info_zhan_zou_shi(number: u32) {
+    let zhanzoushi = ZhanZouShi {
+        zou_shi: GongWei {
+            da_an: String::from("大安去远在东方"),
+            liu_lian: String::from("流连眼前在北方"),
+            su_xi: String::from("速喜之时在南方"),
+            chi_kou: String::from("白虎人收在西方"),
+            xiao_ji: String::from("小吉在山林东方"),
+            kong_wang: String::from("空亡在路旁中央"),
+        },
+    };
+    /*依据第三宫落宫解课  */
+    match number {
+        1 => println!("info:{}", zhanzoushi.jie_daan()),
+        2 => println!("info:{}", zhanzoushi.jie_liulian()),
+        3 => println!("info:{}", zhanzoushi.jie_suxi()),
+        4 => println!("info:{}", zhanzoushi.jie_chikou()),
+        5 => println!("info:{}", zhanzoushi.jie_xiaoji()),
+        6 => println!("info:{}", zhanzoushi.jie_kongwang()),
+        _ => println!("落宫数字异常无法解卦..."),
+    }
+}
+//8:占访贵
+pub fn info_zhan_fang_gui(number: u32) {
+    let zhanfanggui = ZhanFangGui {
+        fang_gui: GongWei {
+            da_an: String::from("大安西南贵人帮"),
+            liu_lian: String::from("流连西北必吉祥"),
+            su_xi: String::from("速喜求贵居坎上"),
+            chi_kou: String::from("白虎遂意艮北方"),
+            xiao_ji: String::from("小吉东南大吉昌"),
+            kong_wang: String::from("空亡东西西南当"),
+        },
+    };
+    /*依据第三宫落宫解课
+     */
+    match number {
+        1 => println!("info:{}", zhanfanggui.jie_daan()),
+        2 => println!("info:{}", zhanfanggui.jie_liulian()),
+        3 => println!("info:{}", zhanfanggui.jie_suxi()),
+        4 => println!("info:{}", zhanfanggui.jie_chikou()),
+        5 => println!("info:{}", zhanfanggui.jie_xiaoji()),
+        6 => println!("info:{}", zhanfanggui.jie_kongwang()),
+        _ => println!("落宫数字异常无法解卦..."),
+    }
+}
+
+pub fn info_zhan_he_huo(number: u32) {} //9:占合伙
+
+pub fn info_zhan_hun_yin(number: u32) {} //10:占婚姻
+
+pub fn info_zhan_mai_zang(number: u32) {} //11:占埋葬
+
+pub fn info_zhan_xiu_fang(number: u32) {} //4:占修方
+
+pub fn info_zhan_song_fang(number: u32) {} //13:占送方
+
+pub fn info_zhan_yu_zhao(number: u32) {} //14:占预兆
+
+pub fn info_zhan_guan_fei(number: u32) {} //15:占官非
+
+pub fn info_zhan_feng_shui(number: u32) {} //16:占风水
+
+pub fn info_zhan_xu_shi(number: u32) {} //17:占虚实
+
+pub fn info_zhan_qi_ta(number: u32) {} //18:占其他
