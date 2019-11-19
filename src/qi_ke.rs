@@ -31,7 +31,7 @@ pub fn list_info() -> u32 {
     value_in_info(_n);
     return _n;
 }
-//根据输入遍历占卜信息
+//根据输入选择对应占卜信息
 pub fn value_in_info(n: u32) {
     let mut _n1 = n;
     //println!("n in value = {}", _n1);
@@ -205,7 +205,7 @@ pub fn qi_ke(n: u32) {
             _ => println!("三宫什么鬼?"),
         }
         //画一个界限线
-        println!("::::::::::::::::::::::::::::");
+        println!(":::::::::::::::::::::::::::::::::");
         let ten_millis = time::Duration::from_secs(3);
         thread::sleep(ten_millis);
         //根据落宫起课
@@ -234,7 +234,7 @@ pub fn qi_ke(n: u32) {
             _ => println!("三宫什么鬼?"),
         }
         //画一个界限线
-        println!("::::::::::::::::::::::::::::");
+        println!(":::::::::::::::::::::::::::::::::");
         let ten_millis = time::Duration::from_secs(3);
         thread::sleep(ten_millis);
         //根据落宫起课

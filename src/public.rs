@@ -11,7 +11,7 @@ struct LiuGong {
 }
 
 //　打印宫位
-
+#[allow(dead_code)]
 pub(crate) fn gong_wei() {
     let gong_wei = LiuGong {
         yi_gong: String::from("大安"),
@@ -33,7 +33,7 @@ pub(crate) fn gong_wei() {
 }
 
 pub fn some_other() {
-    println!("::::::::::::::::::::::::::::");
+    println!(":::::::::::::::::::::::::::::::::");
     println!(" ");
     let ten_millis = time::Duration::from_secs(2);
     thread::sleep(ten_millis);
