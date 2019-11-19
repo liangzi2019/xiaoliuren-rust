@@ -1,7 +1,10 @@
 //小掉桥内容
-use crate::public::{
-    GongWei, JieChiKou, JieDaAn, JieKongWang, JieLiuLian, JieSuXi, JieXiaoJi, XiaoDiaoQiao,
-};
+
+use crate::public::{GongWei, JieChiKou, JieDaAn, JieKongWang, JieLiuLian, JieSuXi, JieXiaoJi};
+
+pub struct XiaoDiaoQiao {
+    pub(crate) diao_qiao: GongWei,
+}
 
 impl JieDaAn for XiaoDiaoQiao {
     fn jie_daan(&self) -> String {

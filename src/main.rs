@@ -2,8 +2,9 @@ pub mod qi_ke;
 use crate::qi_ke::list_info;
 pub mod jie_gua;
 pub mod public;
-use crate::public::{gong_wei, some_other};
+use crate::public::some_other;
 pub mod xiao_diao_qiao;
+pub mod zhang_zhong_jue;
 
 //定宫
 //数字为落宫位置　根据数字定宫位：
@@ -18,9 +19,6 @@ pub mod xiao_diao_qiao;
 
 fn main() {
     list_info();
-
-    //调用宫位
-    //gong_wei();
-    //公共部分共有内容　预计后期添加
+    //公共部分共有内容
     some_other();
 }

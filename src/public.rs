@@ -1,6 +1,7 @@
 use std::{thread, time};
 
 //　六宫的结构体
+#[allow(dead_code)]
 struct LiuGong {
     yi_gong: String,
     er_gong: String,
@@ -42,11 +43,6 @@ pub struct GongWei {
     pub kong_wang: String,
 }
 
-//小掉桥
-pub struct XiaoDiaoQiao {
-    pub(crate) diao_qiao: GongWei,
-}
-
 //实现六个宫位的共性方法
 pub trait JieDaAn {
     fn jie_daan(&self) -> String;
@@ -69,9 +65,9 @@ pub trait JieKongWang {
 
 //作者添加内容
 pub fn some_other() {
-    println!(":::::::::::::::::::::::::::::::::");
+    println!("::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::");
     println!(" ");
-    let ten_millis = time::Duration::from_secs(2);
+    let ten_millis = time::Duration::from_secs(10);
     thread::sleep(ten_millis);
     println!("      六壬通神暄未然");
     let ten_millis = time::Duration::from_secs(1);
@@ -83,5 +79,6 @@ pub fn some_other() {
     let ten_millis = time::Duration::from_secs(1);
     thread::sleep(ten_millis);
     println!("      虚实明辨壬中求");
+    println!("                              /by liang_zi");
     println!(" ");
 }

@@ -2,17 +2,7 @@
 
 use crate::public::{GongWei, JieChiKou, JieDaAn, JieKongWang, JieLiuLian, JieSuXi, JieXiaoJi};
 use std::process::exit;
-/*
-//六宫的结构体
-pub struct GongWei {
-    pub da_an: String,
-    pub liu_lian: String,
-    pub su_xi: String,
-    pub chi_kou: String,
-    pub xiao_ji: String,
-    pub kong_wang: String,
-}
-*/
+
 //1:占求财
 pub struct ZhanQiuCai {
     qiu_cai: GongWei,
@@ -86,27 +76,7 @@ pub struct ZhanXuShi {
 pub struct ZhanQiTa {
     qi_ta: GongWei,
 }
-/*
-//实现六个宫位的共性方法
-pub trait JieDaAn {
-    fn jie_daan(&self) -> String;
-}
-pub trait JieLiuLian {
-    fn jie_liulian(&self) -> String;
-}
-pub trait JieSuXi {
-    fn jie_suxi(&self) -> String;
-}
-pub trait JieChiKou {
-    fn jie_chikou(&self) -> String;
-}
-pub trait JieXiaoJi {
-    fn jie_xiaoji(&self) -> String;
-}
-pub trait JieKongWang {
-    fn jie_kongwang(&self) -> String;
-}
-*/
+
 //依据落宫解卦
 //1 占求财
 impl JieDaAn for ZhanQiuCai {

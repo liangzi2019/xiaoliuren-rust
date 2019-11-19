@@ -1,6 +1,8 @@
 //卜法卷可卜算内容列表
+
 use crate::jie_gua::display_info;
 use crate::xiao_diao_qiao::diao_qiao;
+use crate::zhang_zhong_jue::ask_zzj;
 use std::process::exit;
 use std::{io, thread, time};
 
@@ -171,7 +173,7 @@ pub fn qi_ke(n: u32) {
     //根据确定落宫数字来定宫
     //定一宫
     let yigong: u32 = one % 6;
-    println!("数字{}落{}宫", one, yigong);
+    //println!("数字{}落{}宫", one, yigong);
     match yigong {
         1 => println!("大安"),
         2 => println!("留连"),
@@ -209,13 +211,16 @@ pub fn qi_ke(n: u32) {
                 _ => println!("三宫什么鬼?"),
             }
             //画一个界限线
-            println!(":::::::::::::::::::::::::::::::::");
+            println!("::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::");
             let ten_millis = time::Duration::from_secs(3);
             thread::sleep(ten_millis);
             //根据落宫起课
             display_info(n, sangong);
             //小掉桥部分
             diao_qiao(sangong);
+            //掌中诀部分
+            ask_zzj(sangong);
+        //info_zzj(sangong);
         } else if three <= 6 {
             let sangong: u32 = ergong + three - 1;
             //println!("数字{}落{}宫", three, sangong);
@@ -229,13 +234,16 @@ pub fn qi_ke(n: u32) {
                 _ => println!("三宫什么鬼?"),
             }
             //画一个界限线
-            println!(":::::::::::::::::::::::::::::::::");
+            println!("::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::");
             let ten_millis = time::Duration::from_secs(3);
             thread::sleep(ten_millis);
             //根据落宫起课
             display_info(n, sangong);
             //小掉桥部分
             diao_qiao(sangong);
+            //掌中诀部分
+            ask_zzj(sangong);
+            //info_zzj(sangong);
         }
     //二宫起课数字小于等于６的情况
     } else if two <= 6 {
@@ -262,12 +270,15 @@ pub fn qi_ke(n: u32) {
             _ => println!("三宫什么鬼?"),
         }
         //画一个界限线
-        println!(":::::::::::::::::::::::::::::::::");
+        println!("::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::");
         let ten_millis = time::Duration::from_secs(3);
         thread::sleep(ten_millis);
         //根据落宫起课
         display_info(n, sangong);
         //小掉桥部分
         diao_qiao(sangong);
+        //掌中诀部分
+        ask_zzj(sangong);
+        //info_zzj(sangong);
     }
 }
