@@ -171,7 +171,7 @@ pub fn qi_ke(n: u32) {
     //根据确定落宫数字来定宫
     //定一宫
     let yigong: u32 = one % 6;
-    // println!("数字{}落{}宫", one, yigong);
+    println!("数字{}落{}宫", one, yigong);
     match yigong {
         1 => println!("大安"),
         2 => println!("留连"),
@@ -182,6 +182,7 @@ pub fn qi_ke(n: u32) {
         _ => println!("一宫什么鬼?"),
     }
     //定二 三宫
+    //二宫数字大于六的情况
     if two > 6 {
         let ergong: u32 = yigong + two - 7;
         //println!("数字{}落{}宫", two, ergong);
@@ -194,25 +195,49 @@ pub fn qi_ke(n: u32) {
             0 | 6 | 12 | 18 | 24 | 30 | 36 | 42 | 48 => println!("空亡"),
             _ => println!("二宫什么鬼?"),
         }
-        let sangong: u32 = ergong + three - 7;
-        //println!("数字{}落{}宫", three, sangong);
-        match sangong {
-            1 | 7 | 13 | 19 | 25 | 31 | 37 | 43 => println!("大安"),
-            2 | 8 | 14 | 20 | 26 | 32 | 38 | 44 => println!("留连"),
-            3 | 9 | 15 | 21 | 27 | 33 | 39 | 45 => println!("速喜"),
-            4 | 10 | 16 | 22 | 28 | 34 | 40 | 46 => println!("赤口"),
-            5 | 11 | 17 | 23 | 29 | 35 | 41 | 47 => println!("小吉"),
-            0 | 6 | 12 | 18 | 24 | 30 | 36 | 42 | 48 => println!("空亡"),
-            _ => println!(">6 三宫什么鬼?"),
+        //如果三宫数字大于６－１　小于６－１例如:(三宫数字 1　９　１)
+        if three > 6 {
+            let sangong: u32 = ergong + three - 7;
+            //println!("数字{}落{}宫", three, sangong);
+            match sangong {
+                1 | 7 | 13 | 19 | 25 | 31 | 37 | 43 => println!("大安"),
+                2 | 8 | 14 | 20 | 26 | 32 | 38 | 44 => println!("留连"),
+                3 | 9 | 15 | 21 | 27 | 33 | 39 | 45 => println!("速喜"),
+                4 | 10 | 16 | 22 | 28 | 34 | 40 | 46 => println!("赤口"),
+                5 | 11 | 17 | 23 | 29 | 35 | 41 | 47 => println!("小吉"),
+                0 | 6 | 12 | 18 | 24 | 30 | 36 | 42 | 48 => println!("空亡"),
+                _ => println!(">6 三宫什么鬼?"),
+            }
+            //画一个界限线
+            println!(":::::::::::::::::::::::::::::::::");
+            let ten_millis = time::Duration::from_secs(3);
+            thread::sleep(ten_millis);
+            //根据落宫起课
+            display_info(n, sangong);
+            //小掉桥部分
+            diao_qiao(sangong);
+        } else if three <= 6 {
+            let sangong: u32 = ergong + three - 1;
+            //println!("数字{}落{}宫", three, sangong);
+            match sangong {
+                1 | 7 | 13 | 19 | 25 | 31 | 37 | 43 => println!("大安"),
+                2 | 8 | 14 | 20 | 26 | 32 | 38 | 44 => println!("留连"),
+                3 | 9 | 15 | 21 | 27 | 33 | 39 | 45 => println!("速喜"),
+                4 | 10 | 16 | 22 | 28 | 34 | 40 | 46 => println!("赤口"),
+                5 | 11 | 17 | 23 | 29 | 35 | 41 | 47 => println!("小吉"),
+                0 | 6 | 12 | 18 | 24 | 30 | 36 | 42 | 48 => println!("空亡"),
+                _ => println!(">6 三宫什么鬼?"),
+            }
+            //画一个界限线
+            println!(":::::::::::::::::::::::::::::::::");
+            let ten_millis = time::Duration::from_secs(3);
+            thread::sleep(ten_millis);
+            //根据落宫起课
+            display_info(n, sangong);
+            //小掉桥部分
+            diao_qiao(sangong);
         }
-        //画一个界限线
-        println!(":::::::::::::::::::::::::::::::::");
-        let ten_millis = time::Duration::from_secs(3);
-        thread::sleep(ten_millis);
-        //根据落宫起课
-        display_info(n, sangong);
-        //小掉桥部分
-        diao_qiao(sangong);
+    //二宫起课数字小于等于６的情况
     } else if two <= 6 {
         let ergong: u32 = yigong + two - 1;
         // println!("数字{}落{}宫", two, ergong);
