@@ -3,6 +3,7 @@ use crate::qi_ke::list_info;
 pub mod jie_gua;
 pub mod public;
 use crate::public::{gong_wei, some_other};
+pub mod xiao_diao_qiao;
 
 //定宫
 //数字为落宫位置　根据数字定宫位：

@@ -1,5 +1,6 @@
 //卜法卷可卜算内容列表
 use crate::jie_gua::display_info;
+use crate::xiao_diao_qiao::diao_qiao;
 use std::process::exit;
 use std::{io, thread, time};
 
@@ -133,21 +134,21 @@ pub fn get_input() -> (u32, u32, u32) {
         let _three: u32 = inputthree.trim().parse::<u32>().unwrap();
     */
     //过滤无效的输入
-    let _one: u32 = match input_one.trim().parse() {
+    let mut _one: u32 = match input_one.trim().parse() {
         Ok(num) => num,
         Err(_) => {
             println!("下一次请输入数字　现在程序退出...");
             exit(1);
         }
     };
-    let _two: u32 = match input_two.trim().parse() {
+    let mut _two: u32 = match input_two.trim().parse() {
         Ok(num) => num,
         Err(_) => {
             println!("下一次请输入数字　现在程序退出...");
             exit(1);
         }
     };
-    let _three: u32 = match input_three.trim().parse() {
+    let mut _three: u32 = match input_three.trim().parse() {
         Ok(num) => num,
         Err(_) => {
             println!("下一次请输入数字　现在程序退出...");
@@ -202,7 +203,7 @@ pub fn qi_ke(n: u32) {
             4 | 10 | 16 | 22 | 28 | 34 | 40 | 46 => println!("赤口"),
             5 | 11 | 17 | 23 | 29 | 35 | 41 | 47 => println!("小吉"),
             0 | 6 | 12 | 18 | 24 | 30 | 36 | 42 | 48 => println!("空亡"),
-            _ => println!("三宫什么鬼?"),
+            _ => println!(">6 三宫什么鬼?"),
         }
         //画一个界限线
         println!(":::::::::::::::::::::::::::::::::");
@@ -210,6 +211,8 @@ pub fn qi_ke(n: u32) {
         thread::sleep(ten_millis);
         //根据落宫起课
         display_info(n, sangong);
+        //小掉桥部分
+        diao_qiao(sangong);
     } else if two <= 6 {
         let ergong: u32 = yigong + two - 1;
         // println!("数字{}落{}宫", two, ergong);
@@ -231,7 +234,7 @@ pub fn qi_ke(n: u32) {
             4 | 10 | 16 | 22 | 28 | 34 | 40 | 46 => println!("赤口"),
             5 | 11 | 17 | 23 | 29 | 35 | 41 | 47 => println!("小吉"),
             0 | 6 | 12 | 18 | 24 | 30 | 36 | 42 | 48 => println!("空亡"),
-            _ => println!("三宫什么鬼?"),
+            _ => println!("<=6 三宫什么鬼?"),
         }
         //画一个界限线
         println!(":::::::::::::::::::::::::::::::::");
@@ -239,5 +242,7 @@ pub fn qi_ke(n: u32) {
         thread::sleep(ten_millis);
         //根据落宫起课
         display_info(n, sangong);
+        //小掉桥部分
+        diao_qiao(sangong);
     }
 }
