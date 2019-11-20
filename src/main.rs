@@ -3,6 +3,7 @@ use crate::qi_ke::select;
 pub mod jie_gua;
 pub mod public;
 use crate::public::some_other;
+pub mod shi_wu_jue;
 pub mod xiao_diao_qiao;
 pub mod zhang_zhong_jue;
 

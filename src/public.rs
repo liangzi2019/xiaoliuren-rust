@@ -43,6 +43,11 @@ pub struct GongWei {
     pub kong_wang: String,
 }
 
+//十二时辰
+pub struct TwelveTime {
+    pub twelve_time: GongWei,
+}
+
 //实现六个宫位的共性方法
 pub trait JieDaAn {
     fn jie_daan(&self) -> String;

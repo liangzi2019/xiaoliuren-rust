@@ -1,9 +1,9 @@
 //卜法卷可卜算内容列表
 
 use crate::jie_gua::display_info;
+use crate::shi_wu_jue::ask_swj;
 use crate::xiao_diao_qiao::diao_qiao;
 use crate::zhang_zhong_jue::ask_zzj;
-//use std::borrow::Borrow;
 use std::process::exit;
 use std::{io, thread, time};
 
@@ -11,8 +11,8 @@ use std::{io, thread, time};
 pub fn select() -> u32 {
     println!(
         "\
-         按数字起课选择 1\n\
-         按时间起课选择 2\n"
+         分类断起课选择 1\n\
+         失物诀起课选择 2\n"
     );
     let _n = 1;
     let mut _t = Box::new(2);
@@ -31,7 +31,7 @@ pub fn select() -> u32 {
     } else if _one == *_t {
         //按时辰起课
         //get_input_time();
-        qi_ke_time(*_t)
+        qi_ke_time()
     }
     return *_t;
 }
@@ -231,11 +231,11 @@ pub fn get_input_time() -> (u32, u32, u32) {
             exit(1);
         }
     };
-    //    //判断输入数字是否在起课允许的数字范围之内
-    //    if (_one > 9 || _one < 1) || (_two > 9 || _two < 1) || (_three > 9 || _three < 1) {
-    //        println!("输入数字不在起课范围内 退出...");
-    //        exit(1);
-    //    }
+    //判断输入数字是否在起课允许的数字范围之内
+    if (_one > 30 || _one < 1) || (_two > 30 || _two < 1) || (_three > 30 || _three < 1) {
+        println!("输入的　月　日　时　不在起课范围内 退出...");
+        exit(1);
+    }
     return (_one, _two, _three);
 }
 
@@ -355,9 +355,8 @@ pub fn qi_ke(n: u32) {
 }
 
 //按时辰起课　根据输入起课
-pub fn qi_ke_time(_t: u32) {
+pub fn qi_ke_time() {
     let (one, two, three) = get_input_time();
-    //println!("打印box指针的引用传递{}", _t);
 
     println!("依据以上数字起课为:");
     //根据确定落宫数字来定宫
@@ -404,8 +403,9 @@ pub fn qi_ke_time(_t: u32) {
             println!("::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::");
             let ten_millis = time::Duration::from_secs(3);
             thread::sleep(ten_millis);
-            //根据落宫起课 这里改为失物诀内容
-            //display_shi_wu_jue(sangong);
+
+            //根据落宫时辰起课 这里改为失物诀内容
+            ask_swj(sangong);
             //小掉桥部分
             diao_qiao(sangong);
             //掌中诀部分
@@ -426,8 +426,9 @@ pub fn qi_ke_time(_t: u32) {
             println!("::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::");
             let ten_millis = time::Duration::from_secs(3);
             thread::sleep(ten_millis);
-            //根据落宫起课 这里改为失物诀内容
-            //display_shi_wu_jue(sangong);
+
+            //根据落宫时辰起课 这里改为失物诀内容
+            ask_swj(sangong);
             //小掉桥部分
             diao_qiao(sangong);
             //掌中诀部分
@@ -461,8 +462,9 @@ pub fn qi_ke_time(_t: u32) {
         println!("::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::");
         let ten_millis = time::Duration::from_secs(3);
         thread::sleep(ten_millis);
-        //根据落宫起课 这里改为失物诀内容
-        // display_shi_wu_jue(sangong);
+
+        //根据落宫时辰起课 这里改为失物诀内容
+        ask_swj(sangong);
         //小掉桥部分
         diao_qiao(sangong);
         //掌中诀部分
