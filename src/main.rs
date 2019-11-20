@@ -1,5 +1,5 @@
 pub mod qi_ke;
-use crate::qi_ke::list_info;
+use crate::qi_ke::select;
 pub mod jie_gua;
 pub mod public;
 use crate::public::some_other;
@@ -18,7 +18,8 @@ pub mod zhang_zhong_jue;
 //空亡  6  12(6*1+6)  18(6*2+6)  24(6*3+6) 30(6*4+6)  36(6*5+6) 空亡括号内都加6
 
 fn main() {
-    list_info();
+    select();
+    //list_info();
     //公共部分共有内容
     some_other();
 }

@@ -639,7 +639,7 @@ impl JieKongWang for ZhanQiTa {
     }
 }
 
-//打印解卦信息　_n1为选择占卜内容　即: value_in_info(n: u32)
+//打印分类断的解卦信息　_n1为选择占卜内容　即: value_in_info(n: u32)
 pub fn display_info(_n1: u32, number: u32) {
     if _n1 == 1 {
         info_zhan_qiu_cai(number); //1:占求财
@@ -1189,12 +1189,12 @@ pub fn info_zhan_xu_shi(number: u32) {
 pub fn info_zhan_qi_ta(number: u32) {
     let zhanqita = ZhanQiTa {
         qi_ta: GongWei {
-            da_an: String::from(" "),
-            liu_lian: String::from(" "),
-            su_xi: String::from(" "),
-            chi_kou: String::from(" "),
-            xiao_ji: String::from(" "),
-            kong_wang: String::from(" "),
+            da_an: String::from("等待添加..."),
+            liu_lian: String::from("等待添加..."),
+            su_xi: String::from(" 等待添加..."),
+            chi_kou: String::from("等待添加..."),
+            xiao_ji: String::from("等待添加..."),
+            kong_wang: String::from("等待添加..."),
         },
     };
     /* 依据第三宫落宫解课 速喜大安话语实 小吉流连言必失 白虎多谋假意指 万语虚尽空亡时  */
