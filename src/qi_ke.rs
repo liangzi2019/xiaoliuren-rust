@@ -7,15 +7,17 @@ use crate::zhang_zhong_jue::ask_zzj;
 use std::process::exit;
 use std::{io, thread, time};
 
+const time: u32 = 2;
+const number: u32 = 1;
 //提供选择　数字起课 or 时辰起课
-pub fn select() -> u32 {
+pub fn select() {
     println!(
         "\
-         分类断起课选择 1\n\
-         失物诀起课选择 2\n"
+         Number:按数字起课选择 1\n\
+         Time:按时间起课选择 2\n"
     );
-    let _n = 1;
-    let mut _t = Box::new(2);
+    //let _n = 1;
+    //let mut _t = Box::new(2);
     let mut input_n = String::new();
     io::stdin().read_line(&mut input_n).expect("输入错误");
     let mut _one: u32 = match input_n.trim().parse() {
@@ -25,15 +27,41 @@ pub fn select() -> u32 {
             exit(1);
         }
     };
-    if _one == _n {
+    if _one == number {
         //按数字起课
-        list_info();
-    } else if _one == *_t {
+        println!("分类卷部分按1 失物诀按2");
+        let mut input_N = String::new();
+        io::stdin().read_line(&mut input_N).expect("输入错误");
+        let mut _N: u32 = match input_N.trim().parse() {
+            Ok(num) => num,
+            Err(_) => {
+                println!("下一次请输入数字　现在程序退出...");
+                exit(1);
+            }
+        };
+        if _N == 1 {
+            list_info(); //分类卷
+        } else if _N == 2 {
+            qi_ke_time(); //失物诀
+        }
+    } else if _one == time {
         //按时辰起课
-        //get_input_time();
-        qi_ke_time()
+        println!("分类卷部分按1 失物诀按2");
+        let mut input_T = String::new();
+        io::stdin().read_line(&mut input_T).expect("输入错误");
+        let mut _T: u32 = match input_T.trim().parse() {
+            Ok(num) => num,
+            Err(_) => {
+                println!("下一次请输入数字　现在程序退出...");
+                exit(1);
+            }
+        };
+        if _T == 1 {
+            list_info();
+        } else if _T == 2 {
+            qi_ke_time();
+        }
     }
-    return *_t;
 }
 
 //按照数字起课　列出分类断可占卜信息
@@ -149,8 +177,9 @@ pub fn value_in_info(n: u32) {
 
 //按数字起课　获取用户输入
 pub fn get_input_number() -> (u32, u32, u32) {
-    println!("输入十以内的任意三个数字");
-    //println!("如果安农历时间起课　输入农历的月　日　时　时：十二时辰");
+    //需要把seletc()返回值传递到这里对下面的数字选择做出判断
+    println!("如果按数字起课　输入十以内的任意三个数字");
+    println!("如果安农历时间起课　输入农历的月　日　时　时：十二时辰");
 
     let mut input_one = String::new();
     io::stdin().read_line(&mut input_one).expect("输入错误");
@@ -160,12 +189,7 @@ pub fn get_input_number() -> (u32, u32, u32) {
 
     let mut input_three = String::new();
     io::stdin().read_line(&mut input_three).expect("错误的输入");
-    /*
-        //解析字符串内容 确认落宫数字
-        let _one: u32 = inputone.trim().parse::<u32>().unwrap();
-        let _two: u32 = inputtwo.trim().parse::<u32>().unwrap();
-        let _three: u32 = inputthree.trim().parse::<u32>().unwrap();
-    */
+
     //过滤无效的输入
     let mut _one: u32 = match input_one.trim().parse() {
         Ok(num) => num,
@@ -187,18 +211,38 @@ pub fn get_input_number() -> (u32, u32, u32) {
             println!("下一次请输入数字　现在程序退出...");
             exit(1);
         }
-    };
-    //判断输入数字是否在起课允许的数字范围之内
-    if (_one > 9 || _one < 1) || (_two > 9 || _two < 1) || (_three > 9 || _three < 1) {
-        println!("输入数字不在起课范围内 退出...");
-        exit(1);
-    }
+    }; /*
+       //等于１　是数字起课　限定起课数字
+       if n == number {
+           //按数字起课　判断输入数字是否在起课允许的数字范围之内
+           if (_one > 9 || _one < 1) || (_two > 9 || _two < 1) || (_three > 9 || _three < 1) {
+               println!("输入数字不在起课范围内 退出...");
+               exit(1);
+           }
+       }
+       //按时间起课　断输入数字是否在起课允许的数字范围之内
+       if t == time {
+           if (_one > 30 || _one < 1) || (_two > 30 || _two < 1) || (_three > 30 || _three < 1) {
+               println!("输入的　月　日　时　不在起课范围内 退出...");
+               exit(1);
+           }
+       }*/
     return (_one, _two, _three);
 }
 
 //按时辰起课　获取用户输入
 pub fn get_input_time() -> (u32, u32, u32) {
-    println!("按农历时间起课　输入农历的月　日　时　(时：十二时辰)");
+    println!("按农历时间起课　输入农历的月　日　时");
+    println!(
+        "        1->子时(23:00~1:00)　2->丑时(1:00~3:00) 3->寅时(3:00~5:00) \n
+        4->卯时(5:00~7:00) 5->辰时(7:00~9:00) 6->巳时(9:00~11:00)\n
+        7->午时(11:00~13:00) 8->未时(13:00~15:00) 9->申时(15:00~17:00) \n
+        10->酉时(17:00~19:00) 11->戌时(19:00~21:00) 12亥时(21:00~23:00)"
+    );
+    println!(
+        "example:\
+         4月26辰时测官运"
+    );
 
     let mut input_one = String::new();
     io::stdin().read_line(&mut input_one).expect("输入错误");
@@ -230,12 +274,22 @@ pub fn get_input_time() -> (u32, u32, u32) {
             println!("下一次请输入数字　现在程序退出...");
             exit(1);
         }
-    };
-    //判断输入数字是否在起课允许的数字范围之内
-    if (_one > 30 || _one < 1) || (_two > 30 || _two < 1) || (_three > 30 || _three < 1) {
-        println!("输入的　月　日　时　不在起课范围内 退出...");
-        exit(1);
-    }
+    }; /*
+       //按数字起课　判断输入数字是否在起课允许的数字范围之内
+       if n_t == number {
+           //按数字起课　判断输入数字是否在起课允许的数字范围之内
+           if (_one > 9 || _one < 1) || (_two > 9 || _two < 1) || (_three > 9 || _three < 1) {
+               println!("输入数字不在起课范围内 退出...");
+               exit(1);
+           }
+       }
+       //按时间起课　判断输入数字是否在起课允许的数字范围之内
+       if t_t == time {
+           if (_one > 30 || _one < 1) || (_two > 30 || _two < 1) || (_three > 30 || _three < 1) {
+               println!("输入的　月　日　时　不在起课范围内 退出...");
+               exit(1);
+           }
+       }*/
     return (_one, _two, _three);
 }
 
@@ -405,7 +459,7 @@ pub fn qi_ke_time() {
             thread::sleep(ten_millis);
 
             //根据落宫时辰起课 这里改为失物诀内容
-            ask_swj(sangong);
+            ask_swj(sangong, three);
             //小掉桥部分
             diao_qiao(sangong);
             //掌中诀部分
@@ -428,7 +482,7 @@ pub fn qi_ke_time() {
             thread::sleep(ten_millis);
 
             //根据落宫时辰起课 这里改为失物诀内容
-            ask_swj(sangong);
+            ask_swj(sangong, three);
             //小掉桥部分
             diao_qiao(sangong);
             //掌中诀部分
@@ -464,7 +518,7 @@ pub fn qi_ke_time() {
         thread::sleep(ten_millis);
 
         //根据落宫时辰起课 这里改为失物诀内容
-        ask_swj(sangong);
+        ask_swj(sangong, three);
         //小掉桥部分
         diao_qiao(sangong);
         //掌中诀部分

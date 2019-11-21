@@ -1,12 +1,14 @@
 //马前失物诀　起课与前法略不同　月上起日　日上起时辰
-use crate::public::{GongWei, JieChiKou, JieDaAn, JieKongWang, JieLiuLian, JieSuXi, JieXiaoJi};
+use crate::public::{
+    GongWei, JieChiKou, JieDaAn, JieKongWang, JieLiuLian, JieSuXi, JieXiaoJi, TwelveTime,
+};
 use std::io;
 use std::process::exit;
 
 pub struct ShiWuJue {
     pub(crate) shi_wu: GongWei,
 }
-//方法 这里省略了十二时辰的细分方法　依然按之前落宫解卦
+//方法 落宫解卦
 impl JieDaAn for ShiWuJue {
     fn jie_daan(&self) -> String {
         format!("失物诀-大安: {}", self.shi_wu.da_an)
@@ -38,7 +40,7 @@ impl JieKongWang for ShiWuJue {
     }
 }
 
-pub fn display_shi_wu_jue(j: u32) {
+pub fn display_shi_wu_jue(j: u32, _san_t: u32) {
     let shi_wu_j = ShiWuJue {
         shi_wu: GongWei {
             da_an: String::from(
@@ -102,39 +104,191 @@ pub fn display_shi_wu_jue(j: u32) {
     }
 }
 
-pub(crate) fn ask_swj(j: u32) {
+pub(crate) fn ask_swj(j: u32, san_time: u32) {
     let mut _swj = j;
-    display_shi_wu_jue(_swj);
-    println!("输入m查看更多位置　时间信息");
+    display_shi_wu_jue(_swj, san_time);
+    //println!("输入m查看更多位置　时间信息");
+    time_suj(san_time);
+    address_swj(_swj);
 
-    let mut ask_input = String::new(); //获取用户输入
-    match io::stdin().read_line(&mut ask_input) {
-        Ok(_n) => println!("{}", ask_input),
-        Err(error) => {
-            println!("error: {} 现在退出...", error);
-        }
+    //    let mut ask_input = String::new(); //获取用户输入
+    //    match io::stdin().read_line(&mut ask_input) {
+    //        Ok(_n) => println!("{}", ask_input),
+    //        Err(error) => {
+    //            println!("error: {} 现在退出...", error);
+    //        }
+    //    }
+    //    let m = String::from("m"); //对比字符串
+    //    let lower_ask_input = ask_input.to_lowercase(); //转换输入为小写字母
+    //                                                    //println!("l input ={}", lower_ask_input);
+    //
+    //    if lower_ask_input.trim() == m {
+    //
+    //    } else {
+    //        println!("输入错误现在退出...");
+    //        exit(0);
+    //    }
+}
+
+//十二时辰单独提炼出来分别匹配落宫
+/*
+//十二时辰细分方法
+impl<T> TwelveTime<T> {
+    fn yin_shi(&self) -> &T {
+        &self.yin_shi
     }
-    let m = String::from("m"); //对比字符串
-    let lower_ask_input = ask_input.to_lowercase(); //转换输入为小写字母
-                                                    //println!("l input ={}", lower_ask_input);
+}
+impl<T> TwelveTime<T> {
+    fn mao_shi(&self) -> &T {
+        &self.mao_shi
+    }
+}
+impl<T> TwelveTime<T> {
+    fn chen_shi(&self) -> &T {
+        &self.chen_shi
+    }
+}
+impl<T> TwelveTime<T> {
+    fn si_shi(&self) -> &T {
+        &self.si_shi
+    }
+}
+impl<T> TwelveTime<T> {
+    fn wu_shi(&self) -> &T {
+        &self.wu_shi
+    }
+}
+impl<T> TwelveTime<T> {
+    fn wei_shi(&self) -> &T {
+        &self.wei_shi
+    }
+}
+impl<T> TwelveTime<T> {
+    fn shen_shi(&self) -> &T {
+        &self.shen_shi
+    }
+}
+impl<T> TwelveTime<T> {
+    fn you_shi(&self) -> &T {
+        &self.you_shi
+    }
+}
+impl<T> TwelveTime<T> {
+    fn xu_shi(&self) -> &T {
+        &self.xu_shi
+    }
+}
+impl<T> TwelveTime<T> {
+    fn hai_shi(&self) -> &T {
+        &self.hai_shi
+    }
+}
+*/
+//三宫起课数字对应时辰解卦辞　子时:晚上11~1 丑时:1~3 午时:中午11~1　以此类推
+pub fn time_suj(san_t: u32) {
+    let twelve_time = TwelveTime {
+        yin_shi: String::from("寅卯时辰落坡间"),
+        mao_shi: String::from("寅卯时辰落坡间"),
+        chen_shi: String::from("辰巳定是亲人见"),
+        si_shi: String::from("辰巳定是亲人见"),
+        wu_shi: String::from("午未室中必出观"),
+        wei_shi: String::from("午未室中必出观"),
+        shen_shi: String::from("申酉溜走顺道前"),
+        you_shi: String::from("申酉溜走顺道前"),
+        xu_shi: String::from("戌亥时辰沟窝连"),
+        hai_shi: String::from("戌亥时辰沟窝连"),
+        zi_shi: String::from("子丑时辰林中里"),
+        chou_shi: String::from("子丑时辰林中里"),
+    };
+    //对应三宫输入的时辰数字
+    if san_t == 3 {
+        println!("info:时辰参考-寅时:{}", twelve_time.yin_shi);
+    }
+    if san_t == 4 {
+        println!("info:时辰参考-卯时:{}", twelve_time.mao_shi);
+    }
+    if san_t == 5 {
+        println!("info:时辰参考-辰时:{}", twelve_time.chen_shi);
+    }
+    if san_t == 6 {
+        println!("info:时辰参考-巳时:{}", twelve_time.si_shi);
+    }
+    if san_t == 7 {
+        println!("info:时辰参考-午时:{}", twelve_time.wu_shi);
+    }
+    if san_t == 8 {
+        println!("info:时辰参考-未时:{}", twelve_time.wei_shi);
+    }
+    if san_t == 9 {
+        println!("info:时辰参考-申时:{}", twelve_time.shen_shi);
+    }
+    if san_t == 10 {
+        println!("info:时辰参考-酉时:{}", twelve_time.you_shi);
+    }
+    if san_t == 11 {
+        println!("info:时辰参考-戌时:{}", twelve_time.xu_shi);
+    }
+    if san_t == 12 {
+        println!("info:时辰参考-亥时:{}", twelve_time.hai_shi);
+    }
+    if san_t == 1 {
+        println!("info:时辰参考-子时:{}", twelve_time.xu_shi);
+    }
+    if san_t == 2 {
+        println!("info:时辰参考-丑时:{}", twelve_time.chou_shi);
+    }
+    //这里需要转换为f类型
+    /* let mut san_t_f = san_t as f32 + 0.1;
+    //println!("测试时辰转换效果{}", san_t_f);
+    if san_t_f > 3.0 && san_t_f < 5.0 {
+        println!("info:时辰参考-寅时:{}", twelve_time.yin_shi);
+    }
+    if san_t_f > 5.0 && san_t_f < 7.0 {
+        println!("info:时辰参考-卯时:{}", twelve_time.mao_shi);
+    }
+    if san_t_f > 7.0 && san_t_f < 9.0 {
+        println!("info:时辰参考-辰时:{}", twelve_time.chen_shi);
+    }
+    if san_t_f > 9.0 && san_t_f < 11.0 {
+        println!("info:时辰参考-巳时:{}", twelve_time.si_shi);
+    }
+    if san_t_f > 11.0 || san_t_f < 1.0 {
+        println!("info:时辰参考-午时:{}", twelve_time.wu_shi);
+    }
+    if san_t_f > 1.0 && san_t_f < 3.0 {
+        println!("info:时辰参考-未时:{}", twelve_time.wei_shi);
+    }
+    if san_t_f > 3.0 && san_t_f < 5.0 {
+        println!("info:时辰参考-申时:{}", twelve_time.shen_shi);
+    }
+    if san_t_f > 5.0 && san_t_f < 7.0 {
+        println!("info:时辰参考-酉时:{}", twelve_time.you_shi);
+    }
+    if san_t_f > 7.0 && san_t_f < 9.0 {
+        println!("info:时辰参考-戌时:{}", twelve_time.xu_shi);
+    }
+    if san_t_f > 9.0 && san_t_f < 11.0 {
+        println!("info:时辰参考-亥时:{}", twelve_time.hai_shi);
+    }
+    if san_t_f > 11.0 || san_t_f < 1.0 {
+        println!("info:时辰参考-子时:{}", twelve_time.xu_shi);
+    }
+    if san_t_f > 1.0 && san_t_f < 3.0 {
+        println!("info:时辰参考-丑时:{}", twelve_time.chou_shi);
+    }
+    */
+}
 
-    if lower_ask_input.trim() == m {
-        //失物诀位置　时辰部分内容
-        println!(
-            "       　------------------ ------------------ ------------------
-        马前寻物法真灵 月上起日时顺行 定住宫中时时应 方可推知去向明 
-        先把地支口诀传 再论男女何方转 子丑时辰林中里 寅卯时辰落坡间 
-        辰巳定是亲人见 午未室中必出观 申酉溜走顺道前 戌亥时辰沟窝连 
-    "
-        );
-        println!(
-            "
-        大安东北正东位 流连东南方向会 速喜必是正南回 白虎西南破财回
-        小吉方向住西北 空亡正北不返归 不论何论永难回"
-        );
-        println!("::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::");
-    } else {
-        println!("输入错误现在退出...");
-        exit(0);
+pub fn address_swj(swj: u32) {
+    match swj {
+        1 | 7 | 13 | 19 | 25 | 31 | 37 | 43 => println!("info:位置参考: 大安东北正东位"),
+        2 | 8 | 14 | 20 | 26 | 32 | 38 | 44 => println!("info:位置参考: 流连东南方向会"),
+        3 | 9 | 15 | 21 | 27 | 33 | 39 | 45 => println!("info:位置参考: 速喜必是正南回"),
+        4 | 10 | 16 | 22 | 28 | 34 | 40 | 46 => println!("info:位置参考: 白虎西南破财回"),
+        5 | 11 | 17 | 23 | 29 | 35 | 41 | 47 => println!("info:位置参考: 小吉方向住西北"),
+        0 | 6 | 12 | 18 | 24 | 30 | 36 | 42 | 48 => {
+            println!("info:位置参考： 空亡正北不返归 不论何论永难回")
+        }
+        _ => println!("无法返回失物诀当前宫位的位置信息..."),
     }
 }

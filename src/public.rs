@@ -44,8 +44,20 @@ pub struct GongWei {
 }
 
 //十二时辰
-pub struct TwelveTime {
-    pub twelve_time: GongWei,
+pub struct TwelveTime<T> {
+    // pub twelve_time: GongWei,
+    pub yin_shi: T,
+    pub mao_shi: T,
+    pub chen_shi: T,
+    pub si_shi: T,
+    pub wu_shi: T,
+    pub wei_shi: T,
+    pub shen_shi: T,
+    pub you_shi: T,
+    pub xu_shi: T,
+    pub hai_shi: T,
+    pub zi_shi: T,
+    pub chou_shi: T,
 }
 
 //实现六个宫位的共性方法
