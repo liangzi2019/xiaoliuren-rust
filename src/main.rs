@@ -1,14 +1,16 @@
-pub mod qi_ke;
-use crate::qi_ke::select;
 pub mod jie_gua;
 pub mod public;
+pub mod qi_ke;
 use crate::public::some_other;
+use crate::select::select_time_number;
+
+pub mod select;
 pub mod shi_wu_jue;
 pub mod xiao_diao_qiao;
 pub mod zhang_zhong_jue;
 
-//定宫
-//数字为落宫位置　根据数字定宫位：
+pub mod jin_kou_ding;
+use crate::jin_kou_ding::jkd;
 //１大安; ２留连;　３速喜; 4赤口; 5小吉; ０空亡;
 //同一个宫位循环数字
 //大安　１  7(6*1+1)  13(6*2+1) 19(6*3+1)  25(6*4+1)  31(6*5+1) 大安括号内都加一
@@ -19,8 +21,8 @@ pub mod zhang_zhong_jue;
 //空亡  6  12(6*1+6)  18(6*2+6)  24(6*3+6) 30(6*4+6)  36(6*5+6) 空亡括号内都加6
 
 fn main() {
-    select();
-    //list_info();
+    select_time_number();
+    jkd();
     //公共部分共有内容
     some_other();
 }

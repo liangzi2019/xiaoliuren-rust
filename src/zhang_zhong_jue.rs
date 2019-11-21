@@ -10,7 +10,7 @@ pub struct ZhangZhongJue {
 }
 
 pub(crate) fn ask_zzj(z: u32) -> () {
-    println!("输入m查看掌中诀对应宫位");
+    println!("输入m查看掌中诀对应宫位 + 四十句金口定");
     let mut _number = z;
     let mut ask_input = String::new(); //获取用户输入
     match io::stdin().read_line(&mut ask_input) {

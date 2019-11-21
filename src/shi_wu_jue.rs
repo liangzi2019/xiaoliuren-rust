@@ -2,8 +2,6 @@
 use crate::public::{
     GongWei, JieChiKou, JieDaAn, JieKongWang, JieLiuLian, JieSuXi, JieXiaoJi, TwelveTime,
 };
-use std::io;
-use std::process::exit;
 
 pub struct ShiWuJue {
     pub(crate) shi_wu: GongWei,
@@ -110,80 +108,8 @@ pub(crate) fn ask_swj(j: u32, san_time: u32) {
     //println!("输入m查看更多位置　时间信息");
     time_suj(san_time);
     address_swj(_swj);
-
-    //    let mut ask_input = String::new(); //获取用户输入
-    //    match io::stdin().read_line(&mut ask_input) {
-    //        Ok(_n) => println!("{}", ask_input),
-    //        Err(error) => {
-    //            println!("error: {} 现在退出...", error);
-    //        }
-    //    }
-    //    let m = String::from("m"); //对比字符串
-    //    let lower_ask_input = ask_input.to_lowercase(); //转换输入为小写字母
-    //                                                    //println!("l input ={}", lower_ask_input);
-    //
-    //    if lower_ask_input.trim() == m {
-    //
-    //    } else {
-    //        println!("输入错误现在退出...");
-    //        exit(0);
-    //    }
 }
 
-//十二时辰单独提炼出来分别匹配落宫
-/*
-//十二时辰细分方法
-impl<T> TwelveTime<T> {
-    fn yin_shi(&self) -> &T {
-        &self.yin_shi
-    }
-}
-impl<T> TwelveTime<T> {
-    fn mao_shi(&self) -> &T {
-        &self.mao_shi
-    }
-}
-impl<T> TwelveTime<T> {
-    fn chen_shi(&self) -> &T {
-        &self.chen_shi
-    }
-}
-impl<T> TwelveTime<T> {
-    fn si_shi(&self) -> &T {
-        &self.si_shi
-    }
-}
-impl<T> TwelveTime<T> {
-    fn wu_shi(&self) -> &T {
-        &self.wu_shi
-    }
-}
-impl<T> TwelveTime<T> {
-    fn wei_shi(&self) -> &T {
-        &self.wei_shi
-    }
-}
-impl<T> TwelveTime<T> {
-    fn shen_shi(&self) -> &T {
-        &self.shen_shi
-    }
-}
-impl<T> TwelveTime<T> {
-    fn you_shi(&self) -> &T {
-        &self.you_shi
-    }
-}
-impl<T> TwelveTime<T> {
-    fn xu_shi(&self) -> &T {
-        &self.xu_shi
-    }
-}
-impl<T> TwelveTime<T> {
-    fn hai_shi(&self) -> &T {
-        &self.hai_shi
-    }
-}
-*/
 //三宫起课数字对应时辰解卦辞　子时:晚上11~1 丑时:1~3 午时:中午11~1　以此类推
 pub fn time_suj(san_t: u32) {
     let twelve_time = TwelveTime {
@@ -237,46 +163,6 @@ pub fn time_suj(san_t: u32) {
     if san_t == 2 {
         println!("info:时辰参考-丑时:{}", twelve_time.chou_shi);
     }
-    //这里需要转换为f类型
-    /* let mut san_t_f = san_t as f32 + 0.1;
-    //println!("测试时辰转换效果{}", san_t_f);
-    if san_t_f > 3.0 && san_t_f < 5.0 {
-        println!("info:时辰参考-寅时:{}", twelve_time.yin_shi);
-    }
-    if san_t_f > 5.0 && san_t_f < 7.0 {
-        println!("info:时辰参考-卯时:{}", twelve_time.mao_shi);
-    }
-    if san_t_f > 7.0 && san_t_f < 9.0 {
-        println!("info:时辰参考-辰时:{}", twelve_time.chen_shi);
-    }
-    if san_t_f > 9.0 && san_t_f < 11.0 {
-        println!("info:时辰参考-巳时:{}", twelve_time.si_shi);
-    }
-    if san_t_f > 11.0 || san_t_f < 1.0 {
-        println!("info:时辰参考-午时:{}", twelve_time.wu_shi);
-    }
-    if san_t_f > 1.0 && san_t_f < 3.0 {
-        println!("info:时辰参考-未时:{}", twelve_time.wei_shi);
-    }
-    if san_t_f > 3.0 && san_t_f < 5.0 {
-        println!("info:时辰参考-申时:{}", twelve_time.shen_shi);
-    }
-    if san_t_f > 5.0 && san_t_f < 7.0 {
-        println!("info:时辰参考-酉时:{}", twelve_time.you_shi);
-    }
-    if san_t_f > 7.0 && san_t_f < 9.0 {
-        println!("info:时辰参考-戌时:{}", twelve_time.xu_shi);
-    }
-    if san_t_f > 9.0 && san_t_f < 11.0 {
-        println!("info:时辰参考-亥时:{}", twelve_time.hai_shi);
-    }
-    if san_t_f > 11.0 || san_t_f < 1.0 {
-        println!("info:时辰参考-子时:{}", twelve_time.xu_shi);
-    }
-    if san_t_f > 1.0 && san_t_f < 3.0 {
-        println!("info:时辰参考-丑时:{}", twelve_time.chou_shi);
-    }
-    */
 }
 
 pub fn address_swj(swj: u32) {

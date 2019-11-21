@@ -640,60 +640,60 @@ impl JieKongWang for ZhanQiTa {
 }
 
 //打印分类断的解卦信息　_n1为选择占卜内容　即: value_in_info(n: u32)
-pub fn display_info(_n1: u32, number: u32) {
+pub fn info_fen_lei_juan(_n1: u32) {
     if _n1 == 1 {
-        info_zhan_qiu_cai(number); //1:占求财
+        info_zhan_qiu_cai(_n1); //1:占求财
     }
     if _n1 == 2 {
-        info_zhan_xing_ren(number); //2:占行人
+        info_zhan_xing_ren(_n1); //2:占行人
     }
     if _n1 == 3 {
-        info_zhan_xun_ren(number); //3:占寻人
+        info_zhan_xun_ren(_n1); //3:占寻人
     }
     if _n1 == 4 {
-        info_zhan_jia_xian(number); //4:占家先
+        info_zhan_jia_xian(_n1); //4:占家先
     }
     if _n1 == 5 {
-        info_zhan_shi_wu(number); //5:占失物
+        info_zhan_shi_wu(_n1); //5:占失物
     }
     if _n1 == 6 {
-        info_zhan_bing_ren(number); //6:占病人
+        info_zhan_bing_ren(_n1); //6:占病人
     }
     if _n1 == 7 {
-        info_zhan_zou_shi(number); //7:占走失
+        info_zhan_zou_shi(_n1); //7:占走失
     }
     if _n1 == 8 {
-        info_zhan_fang_gui(number); //8:占访贵
+        info_zhan_fang_gui(_n1); //8:占访贵
     }
     if _n1 == 9 {
-        info_zhan_he_huo(number); //9:占合伙
+        info_zhan_he_huo(_n1); //9:占合伙
     }
     if _n1 == 10 {
-        info_zhan_hun_yin(number); //10:占婚姻
+        info_zhan_hun_yin(_n1); //10:占婚姻
     }
     if _n1 == 11 {
-        info_zhan_mai_zang(number); //11:占埋葬
+        info_zhan_mai_zang(_n1); //11:占埋葬
     }
     if _n1 == 12 {
-        info_zhan_xiu_fang(number); //4:占修方
+        info_zhan_xiu_fang(_n1); //4:占修方
     }
     if _n1 == 13 {
-        info_zhan_song_fang(number); //13:占送方
+        info_zhan_song_fang(_n1); //13:占送方
     }
     if _n1 == 14 {
-        info_zhan_yu_zhao(number); //14:占预兆
+        info_zhan_yu_zhao(_n1); //14:占预兆
     }
     if _n1 == 15 {
-        info_zhan_guan_fei(number); //15:占官非
+        info_zhan_guan_fei(_n1); //15:占官非
     }
     if _n1 == 16 {
-        info_zhan_feng_shui(number); //16:占风水
+        info_zhan_feng_shui(_n1); //16:占风水
     }
     if _n1 == 17 {
-        info_zhan_xu_shi(number); //17:占虚实
+        info_zhan_xu_shi(_n1); //17:占虚实
     }
     if _n1 == 18 {
-        info_zhan_qi_ta(number); //18:占其他
+        info_zhan_qi_ta(_n1); //18:占其他
     }
     if _n1 < 1 || _n1 > 18 {
         println!("解卦已超范围　退出...");
